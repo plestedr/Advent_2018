@@ -1,0 +1,26 @@
+project Advent_2018_3A is
+
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+   for Main use ("main.adb");
+
+   package Builder is
+      for Switches ("claims.adb") use ("-g");
+      for Switches ("claims.ads") use ("-g");
+      for Switches ("main.adb") use ("-g");
+   end Builder;
+
+   package Compiler is
+      for Switches ("claims.adb") use ("-g");
+      for Switches ("claims.ads") use ("-g");
+      for Switches ("main.adb") use ("-g");
+   end Compiler;
+
+   package Linker is
+      for Switches ("claims.adb") use ("-g");
+      for Switches ("claims.ads") use ("-g");
+      for Switches ("main.adb") use ("-g");
+   end Linker;
+
+end Advent_2018_3A;
+

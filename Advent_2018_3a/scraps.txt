@@ -1,0 +1,15 @@
+      If (Next_Claim.Delta_X = 0) or (Next_Claim.Delta_Y = 0) then
+
+         ATIO.Put("Number is " & Next_Claim.Number'Image);
+         ATIO.Put(" Delta X is " & Next_Claim.Delta_X'Image);
+         ATIO.Put_Line(" Delta Y is " & Next_Claim.Delta_Y'Image);
+
+      end if;
+
+      If (Next_Claim.Anchor_X = 0) or (Next_Claim.Anchor_Y = 0) then
+
+         ATIO.Put("Number is " & Next_Claim.Number'Image);
+         ATIO.Put(" Delta X is " & Next_Claim.Anchor_X'Image);
+         ATIO.Put_Line(" Delta Y is " & Next_Claim.Anchor_Y'Image);
+
+      end if;

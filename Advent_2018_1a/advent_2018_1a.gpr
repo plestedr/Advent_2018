@@ -1,0 +1,5 @@
+project Advent_2018_1A is
+    for Source_Dirs use ("src");
+    for Object_Dir use "obj";
+    for Main use ("main.adb");
+end Advent_2018_1A;
