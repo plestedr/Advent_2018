@@ -8,8 +8,8 @@ package Claims is
          Number : Positive;
          Anchor_X : Natural;
          Anchor_Y : Natural;
-         Delta_X : Natural;
-         Delta_Y : Natural;
+         Delta_X : Positive;
+         Delta_Y : Positive;
       end record;
    
    function decom (ClaimString : in String; Length : in Natural)

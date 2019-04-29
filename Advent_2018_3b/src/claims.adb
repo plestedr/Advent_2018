@@ -51,24 +51,18 @@ package body Claims is
       -- Take advantage of this problem's geometry restriction. All polygons are rectangles
       -- with horizontal or vertical edges. Don't need the general point inside a poly test.
       
-      if ((TC.Anchor_X+1 >= LE.Anchor_X+1 and TC.Anchor_X+1 <= LE.Anchor_X+LE.Delta_X) or else
-          (TC.Anchor_X+TC.Delta_X >= LE.Anchor_X+1 and TC.Anchor_X+1 <= LE.Anchor_X+LE.Delta_X))
-        and then
-         ((TC.Anchor_Y+1 >= LE.Anchor_Y+1 and TC.Anchor_Y+1 <= LE.Anchor_Y+LE.Delta_Y) or else
-            (TC.Anchor_Y+TC.Delta_Y >= LE.Anchor_Y+1 and TC.Anchor_Y+1 <= LE.Anchor_Y+LE.Delta_Y))
-      then
-         TestResult := True;
-      end if;      
+      -- This test should be handled in the calling code but...
+      if TC.Number = LE.Number then
+         return False;
+      else        
+         -- Borrowed this from gnatcoll.geometry code
+         return not
+           (TC.Anchor_X+1 > LE.Delta_X+LE.Anchor_X
+            or else LE.Anchor_X+1 > TC.Delta_X+TC.Anchor_X
+            or else TC.Anchor_Y+1 > LE.Delta_Y+LE.Anchor_Y
+            or else LE.Anchor_Y+1 > TC.Delta_Y+TC.Anchor_Y);
+      end if;  
       
---      TestResult := ((TC.Anchor_X+1) in (LE.Anchor_X+1)..(LE.Anchor_X+LE.Delta_X) and 
---                       ( (TC.Anchor_Y+1) in (LE.Anchor_Y+1)..(LE.Anchor_Y+LE.Delta_Y) or
---                          (TC.Anchor_Y+TC.Delta_Y) in (LE.Anchor_Y+1)..(LE.Anchor_Y+LE.Delta_Y ))) 
---        or
---          ((TC.Anchor_X+TC.Delta_X) in (LE.Anchor_X+1)..(LE.Anchor_X+LE.Delta_X) and 
---             ( (TC.Anchor_Y+1) in (LE.Anchor_Y+1)..(LE.Anchor_Y+LE.Delta_Y) or
---                    (TC.Anchor_Y+TC.Delta_Y) in (LE.Anchor_Y+1)..(LE.Anchor_Y+LE.Delta_Y )));
-      
-      return TestResult;
       
       end overlap_test;
 

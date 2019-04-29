@@ -23,7 +23,7 @@ procedure Main is
 
 begin
    ATIO.Open(File => Input_File,
-             Mode => Ada.Text_IO.In_File,
+             Mode => ATIO.In_File,
              Name => Input_File_Name);
 
    while not ATIO.End_Of_File(File => Input_File) loop
@@ -42,8 +42,7 @@ begin
    -- A more robust and generalized test is warranted in real life.
    for I in 1 .. (Input_Loop_Counter -1) loop
       Claim_is_unique := True;
-      for J in (I+1) .. Input_Loop_Counter loop
-       --  ATIO.Put_line(I'Image & "  " & J'Image);
+      for J in 1 .. Input_Loop_Counter loop
          if Claims.overlap_test(TestClaim => Claim_record(I),
                                 ListElement => Claim_record(J)) then
             Claim_is_unique := False;
