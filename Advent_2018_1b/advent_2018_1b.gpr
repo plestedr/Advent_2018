@@ -1,19 +1,22 @@
-project Advent_2018_1B is
+with "config/advent_2018_1b_config.gpr";
+project Advent_2018_1b is
 
-   for Source_Dirs use ("src");
-   for Object_Dir use "obj";
-   for Main use ("main.adb");
-
-   package Builder is
-   end Builder;
+   for Source_Dirs use ("src/", "config/");
+   for Object_Dir use "obj/" & Advent_2018_1b_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Exec_Dir use "bin";
+   for Main use ("advent_2018_1b.adb");
 
    package Compiler is
-      for Switches ("main.adb") use ("-gnat12");
+      for Default_Switches ("Ada") use Advent_2018_1b_Config.Ada_Compiler_Switches;
    end Compiler;
 
-   package Linker is
-      for Switches ("main.adb") use ("-g");
-   end Linker;
+   package Binder is
+      for Switches ("Ada") use ("-Es"); --  Symbolic traceback
+   end Binder;
 
-end Advent_2018_1B;
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
 
+end Advent_2018_1b;

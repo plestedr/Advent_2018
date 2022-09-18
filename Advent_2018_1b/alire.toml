@@ -1,0 +1,9 @@
+name = "advent_2018_1b"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Bob Plested"]
+maintainers = ["Bob Plested <agar29@yahoo.com>"]
+maintainers-logins = ["plestedr"]
+
+executables = ["advent_2018_1b"]
